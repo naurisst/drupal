@@ -1,0 +1,33 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Component\Utility\Html;
+
+/**
+* Implements hook_form_FORM_ID_alter().
+*/
+
+function url_parameter_form_node_sensor_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $value = \Drupal::request()->query->get('room');
+  $value = Html::escape($value);
+  $form['field_room']['widget']['#default_value'] = [$value];
+  //$form['field_room']['widget'][0]['value']['#default_value'] = $value;
+//console_log($form);
+}
+
+function url_parameter_form_node_room_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $value = \Drupal::request()->query->get('flor');
+  $value = Html::escape($value);
+  //$form['field_room']['widget']['#default_value'] = [$value];
+  $form['field_flor']['widget'][0]['value']['#default_value'] = $value;
+//console_log($form);
+}
+
+
+function console_log($output, $with_script_tags = true) {
+  $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . ');';
+  if ($with_script_tags) {
+    $js_code = '<script>' . $js_code . '</script>';
+  }
+  echo $js_code;
+}

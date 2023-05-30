@@ -1,0 +1,7 @@
+custom_rest_api_controller.rest_api_post:
+  path: /my_rest_api/post_data
+  defaults:
+    _title: myPage
+    _controller: Drupal\custom_rest_api_controller\Controller\MyRestController::postData
+  requirements:
+    _permission: 'access content'

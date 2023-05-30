@@ -1,0 +1,29 @@
+version: '3'
+services:
+  mysql:
+    container_name: mysql
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'drupal'
+      MYSQL_USER: 'dbuser'
+      MYSQL_PASSWORD: 'drupal-secret'
+      MYSQL_ROOT_PASSWORD: 'very-secret-root-pass'
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+  drupal:
+    container_name: drupal
+    image: drupal:latest
+    restart: always
+    volumes:
+      - ./drupal-data:/opt/drupal
+    ports:
+      - "8888:80"
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+    environment:
+      - PMA_ARBITRARY=1
+    restart: always
+    ports:
+      - "8080:80"
