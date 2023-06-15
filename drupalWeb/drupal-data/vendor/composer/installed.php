@@ -217,6 +217,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'drupal/charts' => array(
+            'pretty_version' => '5.0.6',
+            'version' => '5.0.6.0',
+            'reference' => '5.0.6',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/charts',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/core' => array(
             'pretty_version' => '10.0.9',
             'version' => '10.0.9.0',
